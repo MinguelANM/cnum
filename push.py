@@ -19,7 +19,6 @@ def executar_git():
         print(f"\n---> Executando: {' '.join(comando)}")
         resultado = subprocess.run(comando)
         
-        # Se algum comando falhar (código diferente de 0), interrompe o processo
         if resultado.returncode != 0:
             print(f"\n❌ Erro ao executar o comando: {' '.join(comando)}")
             sys.exit(resultado.returncode)
