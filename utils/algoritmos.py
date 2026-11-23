@@ -59,3 +59,32 @@ def polinomial(x, y):
 def regressao(x, y, v):
     V = v(np.asarray(x, dtype=float))
     return np.linalg.solve(V.T @ V, V.T @ np.asarray(y, dtype=float))
+
+
+def dp(f, x, h):
+    return (f(x + h) - f(x)) / h
+
+
+def dr(f, x, h):
+    return (f(x) - f(x - h)) / h
+
+
+def dc(f, x, h):
+    return (f(x + h) - f(x - h)) / (2 * h)
+
+
+def medio(f, a, b):
+    return (b - a) * f((a + b) / 2)
+
+
+def trapezio(f, a, b):
+    return (b - a) * (f(a) + f(b)) / 2
+
+
+def simpson(f, a, b):
+    return (b - a) / 6 * (f(a) + 4 * f((a + b) / 2) + f(b))
+
+
+def integral(metodo, f, a, b, n):
+    xs = np.linspace(a, b, n + 1)
+    return sum(metodo(f, xs[i], xs[i + 1]) for i in range(n))
